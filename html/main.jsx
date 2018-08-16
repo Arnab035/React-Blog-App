@@ -1,8 +1,5 @@
+
 class Signin extends React.Component {
-	constructor(props) {
-		super(props);
-		{/* add state */}
-	}
 	render() { 
 		return (
 			<form className="signin">
@@ -19,3 +16,5 @@ class Signin extends React.Component {
 
 
 }
+
+ReactDOM.render(<Signin />, document.getElementById('app'));
