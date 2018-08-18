@@ -1,4 +1,3 @@
-
 class Signin extends React.Component {
   constructor(props){
     super(props);
@@ -9,7 +8,7 @@ class Signin extends React.Component {
 
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-  
+    this.signIn = this.signIn.bind(this);  
   }
   
   handleEmailChange(e) {
@@ -21,6 +20,17 @@ class Signin extends React.Component {
 
   signIn() {
     alert("Email address is " + this.state.email + " and password is " + this.state.password);
+
+    axios.post('/signin', {
+      email: this.state.email,
+      password: this.state.password      
+    })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render() { 
