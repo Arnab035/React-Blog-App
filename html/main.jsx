@@ -1,3 +1,28 @@
+class Signup extends React.Component {
+  render() {
+    return (
+	<div>
+          <form className="signin">
+	    <h3 className="signin-heading">Sign Up</h3>
+	    <label for="inputName" className="ema-pass">Name</label>
+	    <input type="name" onChange={this.handleNameChange} id="inputName" className="form-control" placeholder="name" required autocomplete autofocus />
+	    <label for="inputEmail" className="ema-pass">Email</label>
+	    <input type="email" onChange={this.handleEmailChange} id="inputEmail" className="form-control" placeholder="example@xyz.com" required autocomplete autofocus />
+	    <label for="inputPassword" className="ema-pass">Password</label>
+	    <input type="password" onChange={this.handlePasswordChange} id="inputPassword" className="form-control" required />
+	    <button className="btn btn-lg btn-primary btn-block" type="button" onClick={this.signUp}>Sign Up</button>
+	  </form>
+      </div>
+      );  
+  }
+
+}
+
+var Router = window.ReactRouter.Router;
+var Route= window.ReactRouter.Route;
+var hashHistory = window.ReactRouter.hashHistory;
+var Link= window.ReactRouter.Link;
+
 class Signin extends React.Component {
   constructor(props){
     super(props);
@@ -34,18 +59,28 @@ class Signin extends React.Component {
   }
 
   render() { 
-    return (
-      <form className="signin">
-	<h3 className="signin-heading">Sign In</h3>
-	<label for="inputEmail" className="ema-pass">Email Address</label>
-	<input type="email" id="inputEmail" onChange={this.handleEmailChange} className="form-control" placeholder="example@xyz.com" required autocomplete autofocus />
-	<label for="inputPassword" className="ema-pass">Password</label>
-	<input type="password" id="inputPassword" onChange={this.handlePasswordChange} className="form-control" required />
-	<button className="btn btn-lg btn-primary btn-block" type="button" onClick={this.signIn}>Sign In</button>
-      </form>
+    return(
+      <div>
+        <form className="signin">
+	  <h3 className="signin-heading">Sign In</h3>
+	  <label for="inputEmail" className="ema-pass">Email Address</label>
+	  <input type="email" id="inputEmail" onChange={this.handleEmailChange} className="form-control" placeholder="example@xyz.com" required autocomplete autofocus />
+	  <label for="inputPassword" className="ema-pass">Password</label>
+	  <input type="password" id="inputPassword" onChange={this.handlePasswordChange} className="form-control" required />
+	  <button className="btn btn-lg btn-primary btn-block" type="button" onClick={this.signIn}>Sign In</button>
+        </form>
+        <div>
+          <Link to="/signup">{'Signup'}</Link>
+        </div>
+      </div>
     );
 	
   }
 }
 
-ReactDOM.render(<Signin />, document.getElementById('app'));
+ReactDOM.render(
+	<Router history={hashHistory}>
+	  <Route component={Signin} path="/"></Route>
+	  <Route component={Signup} path="/signup"></Route>
+        </Router>,
+        document.getElementById('app'));
