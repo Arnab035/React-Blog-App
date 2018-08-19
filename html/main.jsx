@@ -1,4 +1,34 @@
 class Signup extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      password: ''
+    };
+
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleEmailChange=this.handleEmailChange.bind(this);
+    this.handlePasswordChange=this.handlePasswordChange.bind(this);
+    this.signUp=this.signUp.bind(this);
+  }
+
+  handleNameChange(e) {
+    this.setState({name: e.target.value});
+  }
+
+  handleEmailChange(e) {
+    this.setState({email: e.target.value});
+  }
+
+  handlePasswordChange(e) {
+    this.setState({password: e.target.value});
+  }
+
+  signUp() {
+    alert("User " + this.state.name + " has registered");
+  }
+
   render() {
     return (
 	<div>
