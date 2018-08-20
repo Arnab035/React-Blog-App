@@ -27,6 +27,17 @@ class Signup extends React.Component {
 
   signUp() {
     alert("User " + this.state.name + " has registered");
+    axios.post('/signup', {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(function(response){
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   }
 
   render() {

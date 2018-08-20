@@ -1,5 +1,6 @@
 var express = require("express");
 var path = require("path");
+var user = require("./user");
 
 var bodyParser = require("body-parser");
 
@@ -21,4 +22,9 @@ app.post('/signin', function(request, response){
     } else {
       response.send("failure"); 
     }
+});
+
+app.post('/signup', function(request, response){
+    user.signup('','','');
+    console.log(response);
 });
